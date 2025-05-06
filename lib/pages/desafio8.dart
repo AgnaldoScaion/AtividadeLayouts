@@ -43,14 +43,14 @@ class Desafio8 extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
+                    backgroundColor: Colors.red, // Use backgroundColor
                   ),
                   child: Text('Voltar'),
                 ),
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context).colorScheme.primary,
+                    backgroundColor: Theme.of(context).colorScheme.primary, // Use backgroundColor
                   ),
                   child: Text('Confirmar'),
                 ),
