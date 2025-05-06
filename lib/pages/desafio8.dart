@@ -1,60 +1,136 @@
 import 'package:flutter/material.dart';
 
 class Desafio8 extends StatelessWidget {
+  const Desafio8({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perfil de Usuário'),
+        title: const Text('Perfil de Usuário'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {},
+          ),
+        ],
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          children: <Widget>[
-            CircleAvatar(
-              radius: 60,
-              backgroundColor: Colors.blue,
-              child: Text(
-                'AV',
-                style: TextStyle(fontSize: 40, color: Colors.white),
-              ),
-            ),
-            SizedBox(height: 20),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Nome',
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'E-mail',
-              ),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Senha',
-              ),
-              obscureText: true,
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red, // Use backgroundColor
+          children: [
+            Stack(
+              alignment: Alignment.bottomRight,
+              children: [
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.primary,
+                      width: 3,
+                    ),
                   ),
-                  child: Text('Voltar'),
+                  child: CircleAvatar(
+                    radius: 56,
+                    backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                    child: const Icon(
+                      Icons.person,
+                      size: 50,
+                    ),
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Theme.of(context).colorScheme.primary, // Use backgroundColor
+                Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    shape: BoxShape.circle,
                   ),
-                  child: Text('Confirmar'),
+                  child: IconButton(
+                    icon: const Icon(Icons.camera_alt, size: 20, color: Colors.white),
+                    onPressed: () {},
+                  ),
                 ),
               ],
+            ),
+            const SizedBox(height: 24),
+            Text(
+              'Juninho Pereira',
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              'naoeodobyd@mail.ru',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 24),
+            const Divider(),
+            const SizedBox(height: 16),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Nome completo',
+                prefixIcon: const Icon(Icons.person),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              initialValue: 'Juninho Pereira',
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'E-mail',
+                prefixIcon: const Icon(Icons.email),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              initialValue: 'naoeodobyd@mail.ru',
+              keyboardType: TextInputType.emailAddress,
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Telefone',
+                prefixIcon: const Icon(Icons.phone),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              initialValue: '(11) 98349-0572',
+              keyboardType: TextInputType.phone,
+            ),
+            const SizedBox(height: 16),
+            TextFormField(
+              decoration: InputDecoration(
+                labelText: 'Endereço',
+                prefixIcon: const Icon(Icons.location_on),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              initialValue: 'Rua Conceição Quem Mora Não Come Pão, 157 - Terra da Garoa, SP',
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text('Salvar Alterações'),
+              ),
+            ),
+            const SizedBox(height: 16),
+            TextButton(
+              onPressed: () {},
+              child: const Text('Sair da Conta'),
             ),
           ],
         ),

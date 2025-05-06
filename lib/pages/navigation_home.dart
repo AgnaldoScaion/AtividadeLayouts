@@ -9,22 +9,24 @@ import 'desafio7.dart';
 import 'desafio8.dart';
 
 class NavigationHome extends StatefulWidget {
+  const NavigationHome({super.key});
+
   @override
-  _NavigationHomeState createState() => _NavigationHomeState();
+  State<NavigationHome> createState() => _NavigationHomeState();
 }
 
 class _NavigationHomeState extends State<NavigationHome> {
   int _selectedIndex = 0;
 
   static final List<Widget> _widgetOptions = <Widget>[
-    Desafio1(),
-    Desafio2(),
-    Desafio3(),
-    Desafio4(),
-    Desafio5(),
-    Desafio6(),
-    Desafio7(),
-    Desafio8(),
+    const Desafio1(),
+    const Desafio2(),
+    const Desafio3(),
+    const Desafio4(),
+    const Desafio5(),
+    const Desafio6(),
+    const Desafio7(),
+    const Desafio8(),
   ];
 
   void _onItemTapped(int index) {
@@ -39,46 +41,47 @@ class _NavigationHomeState extends State<NavigationHome> {
       appBar: AppBar(
         title: const Text('Desafios Flutter'),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Desafio 1',
+            icon: Icon(Icons.contact_mail),
+            label: 'Cartão',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Desafio 2',
+            icon: Icon(Icons.shopping_basket),
+            label: 'Produtos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'Desafio 3',
+            icon: Icon(Icons.article),
+            label: 'Feed',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.layers),
-            label: 'Desafio 4',
+            label: 'Stack',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.grid_on),
-            label: 'Desafio 5',
+            icon: Icon(Icons.grid_view),
+            label: 'Galeria',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.music_note),
-            label: 'Desafio 6',
+            label: 'Música',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.store),
-            label: 'Desafio 7',
+            icon: Icon(Icons.shop),
+            label: 'Loja',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Desafio 8',
+            label: 'Perfil',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Theme.of(context).colorScheme.secondary,
+        unselectedItemColor: const Color.fromARGB(255, 173, 173, 173),
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         onTap: _onItemTapped,
       ),
     );
