@@ -17,38 +17,38 @@ class Desafio5 extends StatelessWidget {
     'assets/imagens/animal1.jpg',
     'assets/imagens/animal2.jpg',
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Galeria de Fotos'),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-            childAspectRatio: 0.72, // Ajustado para evitar overflow
-          ),
-          itemCount: imagens.length,
-          itemBuilder: (context, index) {
-            return Card(
-              elevation: 2,
-              margin: EdgeInsets.zero, // Remove margem padrão do Card
-              child: SizedBox(
-                height: 185, // Altura aumentada para dar margem
+      appBar: AppBar(title: const Text('Galeria de Fotos'), centerTitle: true),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 8, 8, 25), // margem extra inferior
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, // Agora são 4 imagens por linha
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+              childAspectRatio: 0.8, // Proporção de largura para altura
+            ),
+            itemCount: imagens.length,
+            itemBuilder: (context, index) {
+              return Card(
+                elevation: 2,
+                margin: const EdgeInsets.all(4),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Column(
                   children: [
                     // Parte da imagem
                     Expanded(
-                      flex: 4, // Aumentei o flex para dar mais espaço
+                      flex: 3,
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
                           image: DecorationImage(
                             image: AssetImage(imagens[index]),
                             fit: BoxFit.cover,
@@ -58,18 +58,25 @@ class Desafio5 extends StatelessWidget {
                           alignment: Alignment.bottomRight,
                           child: Padding(
                             padding: EdgeInsets.all(4.0),
-                            child: Icon(Icons.photo, size: 16, color: Colors.white),
+                            child: Icon(
+                              Icons.photo,
+                              size: 14,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    // Parte do texto - altura fixa com margem
+                    // Parte do texto
                     Container(
                       constraints: const BoxConstraints(
-                        minHeight: 40,
-                        maxHeight: 45, // Limite máximo aumentado
+                        minHeight: 24,
+                        maxHeight: 28,
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 2,
+                      ),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +84,7 @@ class Desafio5 extends StatelessWidget {
                           Text(
                             'Foto ${index + 1}',
                             style: const TextStyle(
-                              fontSize: 12,
+                              fontSize: 10,
                               fontWeight: FontWeight.bold,
                             ),
                             maxLines: 1,
@@ -87,16 +94,20 @@ class Desafio5 extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Icon(Icons.favorite_border, size: 14),
-                              const SizedBox(width: 2), // Reduzido
-                              const Text('15', style: TextStyle(fontSize: 10)),
-                              const SizedBox(width: 6), // Reduzido
-                              const Icon(Icons.star, size: 14, color: Colors.amber),
-                              const SizedBox(width: 2), // Reduzido
+                              const Icon(Icons.favorite_border, size: 12),
+                              const SizedBox(width: 2),
+                              const Text('15', style: TextStyle(fontSize: 9)),
+                              const SizedBox(width: 4),
+                              const Icon(
+                                Icons.star,
+                                size: 12,
+                                color: Colors.amber,
+                              ),
+                              const SizedBox(width: 2),
                               Text(
                                 '4.5',
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: 9,
                                   color: Colors.grey[600],
                                 ),
                               ),
@@ -107,9 +118,9 @@ class Desafio5 extends StatelessWidget {
                     ),
                   ],
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

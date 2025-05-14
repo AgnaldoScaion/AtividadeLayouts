@@ -12,15 +12,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 return MaterialApp(
   title: 'Desafios Flutter',
-  theme: ThemeData(
-    primarySwatch: Colors.blueGrey,  // Troquei para blueGrey
-    colorScheme: ColorScheme.light(
-      primary: Colors.blueGrey[800]!,  // Cinza escuro
-      secondary: Colors.amber,         // Cor de destaque
-    ),
-    appBarTheme: AppBarTheme(
-      backgroundColor: Colors.blueGrey[900]!,  // Cinza mais escuro
-      elevation: 0,
+theme: ThemeData(
+  primarySwatch: Colors.blueGrey,
+  colorScheme: ColorScheme.light(
+    primary: Colors.blueGrey[800]!,
+    secondary: Colors.amber,
+  ),
+  scaffoldBackgroundColor: Colors.grey[900], // Preto mais claro
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.blueGrey[900]!,
+    elevation: 0,
     ),
   ),
   darkTheme: ThemeData.dark().copyWith(
